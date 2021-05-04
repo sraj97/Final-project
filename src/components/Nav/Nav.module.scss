@@ -1,0 +1,92 @@
+@import "../../variables.scss";
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+@font-face {
+    font-family: 'Pragmatica ExtraLight Reg';
+    src: url('../../assets/Pragmatica-ExtraLight.woff') format('woff');
+    }
+*{
+    font-family:'Pragmatica ExtraLight Reg';
+    font-weight:normal;
+    
+}
+nav{
+    height: fit-content;
+    width: 100vw;
+    background-color: #DEE7E7;
+
+   div{
+       img{
+           width: auto;
+           height: auto;
+       }
+
+       ul{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            list-style-type: none;
+            margin: 0px 0px 0px 5px;
+            padding: 0px 0px 0px 0px;
+       }
+   }
+}
+.navButtons{
+    a:link, a:visited{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #FFFFFF;
+        padding: 10px 9px 10px 10px;
+        text-decoration: none;
+        cursor: pointer;
+        border-right: 1px solid#DEE7E7;
+    }
+}
+
+
+.topBar{
+    display: flex;
+    align-items: center; 
+    justify-content: left;
+    width: 100%;
+    height: 4vh;
+    background-color: #535657;
+    font-size: 12px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.navFlex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    margin: 5px 5px 0px 5px;
+}
+.productOptions{
+    margin-left: 50px;
+    a:link, a:visited{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #535657;
+        padding: 10px 9px 10px 10px;
+        text-decoration: none;
+        font-weight: bolder;
+        cursor: pointer;
+    }
+}
+
+.logo{
+    margin-right: 20px;
+}
+.info{
+    margin-right: 5px;
+}
+.multicover{
+    height: 60px;
+    width: 60px;
+}

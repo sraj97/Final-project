@@ -1,0 +1,13 @@
+@import "../../variables.scss";
+
+.buttons{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+
+    button{
+        margin: 20px;
+    }
+}
