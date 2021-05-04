@@ -53,7 +53,15 @@ const NewClaimForm = (props) => {
                     Your Vehicle Model: 
                     <input type="text" id="Model" name="Model"></input>
                 </label>
-                
+                <label htmlFor="Location">
+                    Incident Location: 
+                    <input type="text" id="Location" name="Location"></input>
+                </label>
+                <label htmlFor="circs">
+                    Incident Circumstances: 
+                    <input type="text" id="circs" name="circs"></input>
+                </label>
+                <input type="button" value=""/>
                 
             </form>
         </section>
