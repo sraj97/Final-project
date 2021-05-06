@@ -1,67 +1,129 @@
 import React, {useState} from 'react';
 import style from './NewClaimForm.module.scss';
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const NewClaimForm = (props) => {
-    const [startDate, setStartDate] = useState(new Date());
-    const maxDate = new Date();
+
+    const [form, setForm] = useState({
+        title : "",
+        fName : "",
+        lName : "",
+        date : "", 
+        phNumber: "",
+        email: "", 
+        phReg : "",
+        make : "",
+        model : "", 
+        location : "", 
+        circs : "", 
+        phDamage : "",
+        tpFirstName : "",
+        tpLastName : "", 
+        tpNumber : "",
+        tpReg : "", 
+        tpMake : "",
+        tpModel : "",
+        tpDamage : ""
+    }); 
+
+    const createNewClaim = (event) => {
+        event.preventDefault();
+
+        fetch("https://shweta-api-dot-shweta-312709.nw.r.appspot.com/motor", {
+            method: "POST",
+            headers : {
+                "Content-Type" : "application/json",
+                "accept": "application/json"
+            }, 
+            body:JSON.stringify(form),
+        })
+        .then(res => res.json())
+        .then(json => console.log(json))
+        .catch(err => console.log(err));
+    };
 
     return (
         <section>
-            <form onSubmit={() => ""}>
+            <h1>Car Insurance Claim</h1>
+            <form onSubmit ={(e) => createNewClaim(e)}>
                 <label htmlFor="date">
                     Date of incident:
-                    <DatePicker 
-                        name = "date" 
-                        id="date" 
-                        selected={startDate} 
-                        onChange={date => setStartDate(date)} 
-                        maxDate={maxDate}
-                        dateFormat="MM/dd/yyyy" />
+                    <input type="date" name="date" id="date" onInput = {(e) => setForm({...form, date : e.target.value})} required/>
                 </label>
                 <label htmlFor="title-input">
                     Title: 
-                    <select name="title-input" id="title-input">
-                        <option value="Mr">Mr</option>
-                        <option value="Mrs">Mrs</option>
-                        <option value="Miss">Miss</option>
-                        <option value="Ms">Ms</option>
-                        <option value="Dr">Dr</option>
-                        <option value="Prof">Prof</option>
-                        <option value="Mx">Mx</option>
-                    </select>
+                    <input type="text" id="title" name="title" onInput = {(e) => setForm({...form, title : e.target.value})}></input>
                 </label>
                 <label htmlFor="fname">
                     First Name: 
-                    <input type="text" id="fname" name="fname"></input>
+                    <input type="text" id="fname" name="fname" onInput = {(e) => setForm({...form,fName : e.target.value})}></input>
                 </label>
                 <label htmlFor="lname">
                     Last Name: 
-                    <input type="text" id="lname" name="lname"></input>
+                    <input type="text" id="lname" name="lname" onInput = {(e) => setForm({...form,lName : e.target.value})}></input>
                 </label>
-                
-                <label htmlFor="PH-Vehicle-Reg">
+                <label htmlFor="contactNumber">
+                    Contact Number: 
+                    <input type="number" id="contactNumber" name="contactNumber" onInput = {(e) => setForm({...form,phNumber : e.target.value})}></input>
+                </label>
+                <label htmlFor="email">
+                    Email Address: 
+                    <input type="email" id="email" name="email" onInput = {(e) => setForm({...form,email : e.target.value})}></input>
+                </label>
+                <label htmlFor="phVehicleReg">
                     Your Vehicle Registration: 
-                    <input type="text" id="PH-Vehicle-Reg" name="PH-Vehicle-Reg"></input>
+                    <input type="text" id="phVehicleReg" name="phVehicleReg" onInput = {(e) => setForm({...form,phReg : e.target.value})}></input>
                 </label>
-                <label htmlFor="Make">
+                <label htmlFor="phMake">
                     Your Vehicle Make: 
-                    <input type="text" id="Make" name="Make"></input>
+                    <input type="text" id="make" name="make" onInput = {(e) => setForm({...form,make : e.target.value})}></input>
                 </label>
-                <label htmlFor="Modle">
+                <label htmlFor="phModle">
                     Your Vehicle Model: 
-                    <input type="text" id="Model" name="Model"></input>
+                    <input type="text" id="model" name="model" onInput = {(e) => setForm({...form,model : e.target.value})}></input>
                 </label>
-                <label htmlFor="Location">
+                <label htmlFor="location">
                     Incident Location: 
-                    <input type="text" id="Location" name="Location"></input>
+                    <input type="text" id="location" name="location" onInput = {(e) => setForm({...form,location : e.target.value})}></input>
                 </label>
                 <label htmlFor="circs">
                     Incident Circumstances: 
-                    <input type="text" id="circs" name="circs"></input>
+                    <input type="text" id="circs" name="circs" onInput = {(e) => setForm({...form,circs : e.target.value})}></input>
                 </label>
-                <input type="button" value=""/>
+                <label htmlFor="phDamage">
+                     Damage to your vehicle: 
+                    <input type="text" id="phDamage" name="phDamage" onInput = {(e) => setForm({...form,phDamage : e.target.value})}></input>
+                </label>
+                <label htmlFor="tpFirstName">
+                    Third Party First Name:  
+                    <input type="text" id="tpFirstName" name="tpFirstName" onInput = {(e) => setForm({...form,tpFirstName : e.target.value})}></input>
+                </label>
+                <label htmlFor="tpLastName">
+                    Third Party Last Name: 
+                    <input type="text" id="tpLastName" name="tpLastName" onInput = {(e) => setForm({...form,tpLastName : e.target.value})}></input>
+                </label>
+                <label htmlFor="tpContactNumber">
+                    Third Party Contact Number: 
+                    <input type="number" id="tpNumber" name="tpNumber" onInput = {(e) => setForm({...form,tpNumber : e.target.value})}></input>
+                   
+                </label>
+                <label htmlFor="tpVehicleReg">
+                    Registration for third party vehicle:  
+                    <input type="text" id="tpVehicleReg" name="tpVehicleReg" onInput = {(e) => setForm({...form,tpReg : e.target.value})}></input>
+                </label>
+                <label htmlFor="tpMake">
+                    Make of third party vehicle:  
+                    <input type="text" id="tpMake" name="tpMake" onInput = {(e) => setForm({...form,tpMake : e.target.value})}></input>
+                </label>
+                <label htmlFor="tpModel">
+                    Model of third party vehicle:  
+                    <input type="text" id="tpModel" name="tpModel" onInput = {(e) => setForm({...form,tpModel : e.target.value})}></input>
+                </label>
+                <label htmlFor="tpDamage">
+                    Third Party Damage: 
+                    <input type="text" id="tpDamage" name="tpDamage" onInput = {(e) => setForm({...form,tpDamage : e.target.value})}></input>
+                </label>
+                <input type="submit" value="Submit"/>
                 
             </form>
         </section>

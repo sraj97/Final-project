@@ -1,16 +1,16 @@
 @import "../../variables.scss";
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 
 @font-face {
     font-family: 'Pragmatica ExtraLight Reg';
     src: url('../../assets/Pragmatica-ExtraLight.woff') format('woff');
-    }
+}
+
 *{
     font-family:'Pragmatica ExtraLight Reg';
     font-weight:normal;
-    
 }
+
 nav{
     height: fit-content;
     width: 100vw;
@@ -20,7 +20,7 @@ nav{
        img{
            width: auto;
            height: auto;
-       }
+        }
 
        ul{
             display: flex;
@@ -30,8 +30,8 @@ nav{
             list-style-type: none;
             margin: 0px 0px 0px 5px;
             padding: 0px 0px 0px 0px;
-       }
-   }
+        }
+    }
 }
 .navButtons{
     a:link, a:visited{
@@ -50,7 +50,7 @@ nav{
 .topBar{
     display: flex;
     align-items: center; 
-    justify-content: left;
+    justify-content: flex-start;
     width: 100%;
     height: 4vh;
     background-color: #535657;
@@ -79,7 +79,6 @@ nav{
         cursor: pointer;
     }
 }
-
 .logo{
     margin-right: 20px;
 }
